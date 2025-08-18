@@ -2,22 +2,32 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 Route::get('/about', function () {
-    $data1 = "About us - Online Store";
-    $data2 = "About us";
-    $description = "This is an about page ...";
-    $author = "Developed by: Juan José Gómez";
-    return view('home.about')->with("title", $data1)
+    $data1 = 'About us - Online Store';
+    $data2 = 'About us';
+    $description = 'This is an about page ...';
+    $author = 'Developed by: Juan José Gómez';
 
-    ->with("subtitle", $data2)
+    return view('home.about')->with('title', $data1)
+        ->with('subtitle', $data2)
+        ->with('description', $description)
+        ->with('author', $author);
 
-    ->with("description", $description)
+})->name('home.about');
+Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
+Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name('product.create');
+Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name('product.save');
+Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('product.show');
+Route::get('/contact', function () {
+    $title = 'Contact - Online Store';
+    $email = 'contact@onlinestore.com';
+    $address = 'Medellín, Colombia';
+    $phone = '+57 300 123 4567';
 
-    ->with("author", $author);
-
-})->name("home.about");
-Route::get('/products', 'App\Http\Controllers\ProductController@index')->name("product.index");
-Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name("product.create");
-Route::post('/products/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
-Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
+    return view('home.contact')
+        ->with('title', $title)
+        ->with('email', $email)
+        ->with('address', $address)
+        ->with('phone', $phone);
+})->name('home.contact');
