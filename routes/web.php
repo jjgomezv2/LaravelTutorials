@@ -31,10 +31,16 @@ Route::get('/contact', function () {
         ->with('address', $address)
         ->with('phone', $phone);
 })->name('home.contact');
-Route::get('/cart', 'App\Http\Controllers\CartController@index')->name("cart.index");
-Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name("cart.add");
-Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name("cart.removeAll");
-Route::get('/image', 'App\Http\Controllers\ImageController@index')->name("image.index");
-Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name("image.save");
-Route::get('/image-not-di', 'App\Http\Controllers\ImageNotDIController@index')->name("imagenotdi.index");
-Route::post('/image-not-di/save', 'App\Http\Controllers\ImageNotDIController@save')->name("imagenotdi.save");
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
+Route::get('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::get('/cart/removeAll/', 'App\Http\Controllers\CartController@removeAll')->name('cart.removeAll');
+Route::get('/image', 'App\Http\Controllers\ImageController@index')->name('image.index');
+Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name('image.save');
+Route::get('/image-not-di', 'App\Http\Controllers\ImageNotDIController@index')->name('imagenotdi.index');
+Route::post('/image-not-di/save', 'App\Http\Controllers\ImageNotDIController@save')->name('imagenotdi.save');
+
+// ROUTES EXAM 1:
+Route::get('/pilots', 'App\Http\Controllers\PilotController@index')->name('pilot.index');
+Route::get('/pilots/create', 'App\Http\Controllers\PilotController@create')->name('pilot.create');
+Route::post('/pilots/save', 'App\Http\Controllers\PilotController@save')->name('pilot.save');
+Route::get('/pilots/statistics', 'App\Http\Controllers\PilotController@statistics')->name('pilot.statistics');

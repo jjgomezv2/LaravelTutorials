@@ -17,7 +17,7 @@ class ImageNotDIController extends Controller
     public function save(Request $request): RedirectResponse
     {
         // Aquí creas directamente la instancia -> fuerte acoplamiento
-        $storeImageLocal = new ImageLocalStorage();
+        $storeImageLocal = new ImageLocalStorage;
         $storeImageLocal->store($request);
 
         return back();
